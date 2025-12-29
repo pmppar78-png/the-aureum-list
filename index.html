@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Aureum List – Butler Concierge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Concierge-grade luxury. Handpicked watches, private escapes, ultra-luxury stays, elite golf, discreet protection and rare experiences—curated daily." />
+  <style>
+    :root {
+      --bg: #050507;
+      --card: #111016;
+      --card-soft: #17151f;
+      --accent: #bfa46a;
+      --accent-soft: rgba(191,164,106,0.16);
+      --text-main: #f7f4ef;
+      --text-soft: #c9c3b7;
+      --chip-bg: #18151e;
+      --border-subtle: rgba(255,255,255,0.06);
+      --radius-xl: 22px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 22px 55px rgba(0,0,0,0.7);
+      --shadow-chip: 0 8px 22px rgba(0,0,0,0.65);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #101018 0, #050507 55%, #020203 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at top left, rgba(191,164,106,0.12) 0, transparent 55%),
+        radial-gradient(circle at 120% 10%, rgba(126,210,255,0.16) 0, transparent 60%);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(22px);
+      background: linear-gradient(to bottom, rgba(5,5,7,0.98), rgba(5,5,7,0.88));
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-pill {
+      width: 32px;
+      height: 64px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #fdf7e3 0, #bfa46a 35%, #5a4724 74%, #151008 100%);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.85);
+    }
+    .logo-text {
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      font-size: 0.90rem;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .logo-text span { display: block; }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav li button, nav li a {
+      font-size: 0.8rem;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(5,5,7,0.7);
+      color: var(--text-main);
+      box-shadow: var(--shadow-chip);
+      cursor: pointer;
+    }
+    nav li a.nav-pill-primary {
+      border-color: rgba(191,164,106,0.75);
+      background: radial-gradient(circle at top left, #f5e5b2 0, #bfa46a 40%, #5a4724 100%);
+      color: #050507;
+      font-weight: 600;
+    }
+    main {
+      flex: 1;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 18px 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+    @media (max-width: 880px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    .card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, #17151f 0, #09080d 55%, #050507 100%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 22px 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(191,164,106,0.38), transparent 26%, transparent 74%, rgba(191,164,106,0.22));
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(191,164,106,0.9);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(2.05rem, 4vw, 2.7rem);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .hero-copy {
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+      max-width: 32rem;
+      margin-bottom: 18px;
+    }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .chip {
+      padding: 7px 13px;
+      font-size: 0.78rem;
+      border-radius: var(--radius-pill);
+      background: radial-gradient(circle at top left, #201923, #111016);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow-chip);
+      color: var(--text-soft);
+      white-space: nowrap;
+    }
+    .chip span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 11px 18px;
+      font-size: 0.86rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: radial-gradient(circle at top left, #f7e9bd 0, #cba963 32%, #604622 100%);
+      color: #050507;
+      font-weight: 600;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.85);
+    }
+    .btn-ghost {
+      background: rgba(5,5,7,0.8);
+      border-color: rgba(255,255,255,0.12);
+      color: var(--text-main);
+    }
+    .btn span.badge {
+      font-size: 0.74rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(5,5,7,0.75);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: var(--accent);
+    }
+    .grid-label { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 12px; }
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .pill {
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.80rem;
+      background: rgba(5,5,7,0.92);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-soft);
+    }
+    .section-title {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .section-subcopy {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 14px;
+    }
+    .collection-card {
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      background: radial-gradient(circle at top, #1a151f, #07070a);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow-soft);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.72rem;
+      color: var(--text-soft);
+      margin-bottom: 9px;
+    }
+    .collection-title {
+      font-size: 0.96rem;
+      margin-bottom: 2px;
+    }
+    .collection-meta {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+      margin-bottom: 9px;
+    }
+    .collection-cta {
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 24px;
+    }
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 18px 26px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav-inner">
+        <div class="logo-lockup">
+          <div class="logo-pill" aria-hidden="true"></div>
+          <div class="logo-text">
+            <span>The</span>
+            <span>Aureum&nbsp;List</span>
+          </div>
+        </div>
+        <nav aria-label="Main">
+          <ul>
+            <li><a href="#top-lists">Top Lists</a></li>
+            <li><a href="#collections">Ultra Collection</a></li>
+            <li><a href="butler.html" class="nav-pill-primary">Butler Concierge · Online</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-grid">
+        <article class="card">
+          <div class="card-inner">
+            <div class="eyebrow">Concierge</div>
+            <h1>Concierge‑grade luxury.</h1>
+            <p class="hero-copy">
+              Handpicked watches, private escapes, elite golf, discreet protection and rare experiences — curated daily for clients who live at the top of the curve.
+            </p>
+            <div class="chip-row">
+              <div class="chip"><span>Gift under $1,000</span> for a CEO</div>
+              <div class="chip">Private island week in January</div>
+              <div class="chip">Statement timepiece — no waitlist</div>
+              <div class="chip">Jet card vs on‑demand — help me choose</div>
+            </div>
+            <div class="hero-buttons">
+              <a href="butler.html" class="btn btn-primary">
+                Open the Butler Concierge
+                <span class="badge">Online · 24/7 AI</span>
+              </a>
+              <a href="#collections" class="btn btn-ghost">Browse today’s Aureum picks</a>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card">
+          <div class="card-inner">
+            <div class="grid-label">Explore by category</div>
+            <div class="pill-grid">
+              <div class="pill">Watches &amp; Jewelry</div>
+              <div class="pill">Private Travel</div>
+              <div class="pill">Ultra‑Luxury Stays &amp; Private Islands</div>
+              <div class="pill">Supercars &amp; Experiences</div>
+              <div class="pill">Fine Dining &amp; Private Chefs</div>
+              <div class="pill">Art &amp; Collectibles</div>
+              <div class="pill">Elite Credit &amp; Banking</div>
+              <div class="pill">Protection &amp; Privacy</div>
+              <div class="pill">Longevity &amp; Executive Health</div>
+            </div>
+            <h2 class="section-title" id="top-lists">Top Lists · Editorial Picks</h2>
+            <p class="section-subcopy">
+              Shortlists you can actually book — not fantasy catalogs. Each pick is vetted for quality, service and “rich‑energy” impact.
+            </p>
+            <ul class="section-subcopy" style="list-style: disc; padding-left: 1.2rem;">
+              <li>Top 10 “Rich Energy” Gifts Under $1,000</li>
+              <li>Best Private Jet Memberships (2025)</li>
+              <li>Ultra‑Luxury Hotels You Can Actually Book</li>
+              <li>Armored SUVs &amp; Secure Drivers — Discreet Options</li>
+              <li>Collector Watches Available Now</li>
+              <li>Private Islands — 7 That Never Miss</li>
+              <li>Grand Prix Weekends — Where to Stay &amp; Dine</li>
+              <li>Elite Cards with Real Travel Perks</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <section id="collections">
+        <div style="margin: 4px 0 14px;">
+          <div class="eyebrow">Ultra Collection</div>
+          <h2 class="section-title">Pieces &amp; experiences that sit at the apex.</h2>
+          <p class="section-subcopy">
+            Museum‑grade jewelry, grail‑level watches, full‑island buy‑outs, VVIP jet completions and discreet executive protection — surfaced without the noise.
+          </p>
+        </div>
+        <div class="collections-grid">
+          <article class="collection-card">
+            <div class="tag">Watches &amp; Jewelry</div>
+            <h3 class="collection-title">Patek Philippe Nautilus 5811/1R</h3>
+            <div class="collection-meta">$200k+ · secondary market</div>
+            <div class="collection-cta">Open concierge for vetted dealers</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Watches &amp; Jewelry</div>
+            <h3 class="collection-title">Audemars Piguet Royal Oak 15510ST</h3>
+            <div class="collection-meta">$30k–$40k · allocation only</div>
+            <div class="collection-cta">Request live waitlist alternatives</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Watches &amp; Jewelry</div>
+            <h3 class="collection-title">Rolex Cosmograph Daytona</h3>
+            <div class="collection-meta">$25k–$60k · steel &amp; precious metal</div>
+            <div class="collection-cta">Compare market‑ready references</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Watches &amp; Jewelry</div>
+            <h3 class="collection-title">Richard Mille RM 11‑03</h3>
+            <div class="collection-meta">$300k+ · fly‑back chronograph</div>
+            <div class="collection-cta">Ask for lightweight sport pieces</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Watches &amp; Jewelry</div>
+            <h3 class="collection-title">Graff — Haute Joaillerie Peacock Brooch</h3>
+            <div class="collection-meta">$100M+ (POA) · colored diamonds</div>
+            <div class="collection-cta">Introduce discreet high‑jewelry houses</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Watches &amp; Jewelry</div>
+            <h3 class="collection-title">Patek Philippe Grandmaster Chime 6300G</h3>
+            <div class="collection-meta">$10M+ · pinnacle grand complication</div>
+            <div class="collection-cta">Discover serious horology alternatives</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Aviation Services</div>
+            <h3 class="collection-title">BBJ / ACJ VVIP Cabin Completion</h3>
+            <div class="collection-meta">$60M–$120M+ · wide‑body &amp; narrow‑body</div>
+            <div class="collection-cta">Compare completion centers &amp; designers</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Yachting</div>
+            <h3 class="collection-title">Superyacht Charter — 90m+</h3>
+            <div class="collection-meta">€1M–€2M+ / week · full‑crew</div>
+            <div class="collection-cta">Request new‑build charter flagships</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Ultra‑Luxury Stays &amp; Private Islands</div>
+            <h3 class="collection-title">Entire Private Island — Full Buy‑Out</h3>
+            <div class="collection-meta">$1M+ / week · full staff &amp; security</div>
+            <div class="collection-cta">Ask for winter &amp; summer island options</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Protection &amp; Privacy</div>
+            <h3 class="collection-title">Armored SUVs &amp; Secure Drivers</h3>
+            <div class="collection-meta">Europe · US · Middle East</div>
+            <div class="collection-cta">Request discreet executive protection</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Longevity &amp; Executive Health</div>
+            <h3 class="collection-title">Longevity &amp; Executive Health — Discreet Options</h3>
+            <div class="collection-meta">Full‑stack screening &amp; optimization</div>
+            <div class="collection-cta">Ask for clinic shortlists by city</div>
+          </article>
+          <article class="collection-card">
+            <div class="tag">Elite Credit &amp; Banking</div>
+            <h3 class="collection-title">Elite Cards &amp; Private Banking</h3>
+            <div class="collection-meta">Metal cards · concierge desks</div>
+            <div class="collection-cta">Compare invite‑only and top‑tier cards</div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="card" style="margin-top: 26px;">
+          <div class="card-inner">
+            <div class="eyebrow">Who we are · Who we serve</div>
+            <h2 class="section-title">A private‑office mindset — without the retainers.</h2>
+            <p class="section-subcopy">
+              The Aureum List is a discreet, invitation‑free guide for private families, founders, collectors and travelers who prefer excellence without friction. We curate like a private office: watches, private travel, ultra‑luxury stays, elite golf, fine dining, art and protective services. No clutter. No noise. Only pieces worthy of attention.
+            </p>
+            <p class="section-subcopy">
+              We do not require accounts or public profiles. The butler asks only how you wish to be addressed. When you are ready, open the concierge to explore rich‑energy gifts, meaningful upgrades and “only the best will do” experiences — all surfaced with the calm of a seasoned private office.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© 2025 The Aureum List · A private, editorial concierge guide.</div>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="butler.html">Open Butler Concierge</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Aureum Butler Concierge · AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ask the Aureum Butler for watches, private travel, islands, executive protection, elite cards and more. 24/7 AI concierge." />
+  <style>
+    :root {
+      --bg: #050507;
+      --card: #111016;
+      --accent: #bfa46a;
+      --accent-soft: rgba(191,164,106,0.16);
+      --text-main: #f7f4ef;
+      --text-soft: #c9c3b7;
+      --border-subtle: rgba(255,255,255,0.06);
+      --radius-xl: 22px;
+      --radius-pill: 999px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #101018 0, #050507 55%, #020203 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(5,5,7,0.95);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .title-stack h1 {
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+    }
+    .title-stack p {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+    .pill-link {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.8rem;
+      background: rgba(5,5,7,0.7);
+      white-space: nowrap;
+    }
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .note {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      border-radius: 16px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(10,10,16,0.85);
+    }
+    .note strong { color: var(--accent); }
+    .chat-card {
+      margin-top: 4px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top, #16141f 0, #060509 60%, #030307 100%);
+      padding: 16px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 60vh;
+    }
+    .chat-window {
+      flex: 1;
+      border-radius: 16px;
+      background: rgba(5,5,7,0.82);
+      padding: 12px;
+      overflow-y: auto;
+      max-height: 60vh;
+      scrollbar-width: thin;
+    }
+    .bubble {
+      max-width: 88%;
+      padding: 9px 11px;
+      border-radius: 16px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .bubble.user {
+      margin-left: auto;
+      background: linear-gradient(to right, #f7e9bd, #bfa46a);
+      color: #050507;
+    }
+    .bubble.ai {
+      background: rgba(15,15,22,0.98);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-main);
+    }
+    .bubble.ai a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .bubble.ai a:hover {
+      color: #f7e9bd;
+    }
+    .input-row {
+      margin-top: 6px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .input-row textarea {
+      flex: 1;
+      resize: none;
+      min-height: 46px;
+      max-height: 100px;
+      padding: 9px 11px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(5,5,7,0.96);
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+    .input-row button {
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      font-size: 0.88rem;
+      background: radial-gradient(circle at top left, #f7e9bd 0, #cba963 30%, #604622 100%);
+      color: #050507;
+      font-weight: 600;
+    }
+    .hint-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .hint-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(5,5,7,0.8);
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      cursor: pointer;
+    }
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 18px 24px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="title-stack">
+        <h1>The Aureum Butler · Online</h1>
+        <p>Ask for anything: a villa in Italy tonight, a watch under $50k, a Michelin table, a VVIP jet, or discreet executive protection.</p>
+      </div>
+      <a href="index.html" class="pill-link">← Back to The Aureum List</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="note">
+      Some suggestions may include sponsored partners. This does not affect guidance.
+    </div>
+    <div class="note">
+      <strong>How to use:</strong> In one or two lines, tell the Butler your budget, city, timing and what you're looking for. The AI will reply with a short, refined shortlist. When helpful, it may surface partner links for <strong>watches &amp; jewelry, private jets, luxury hotels, private islands, elite cards, executive protection, fine dining experiences</strong> and more.
+    </div>
+
+    <section class="chat-card" aria-label="Aureum Butler chat">
+      <div id="chat" class="chat-window">
+        <div class="bubble ai">
+          Good day. I am the Aureum Butler. How would you like to be addressed, and what can I quietly arrange for you today?
+        </div>
+      </div>
+      <div class="input-row">
+        <textarea id="message" placeholder="Example: Private island in January for 8 guests, Caribbean or Maldives, $80k–$120k total."></textarea>
+        <button id="sendBtn">Send</button>
+      </div>
+      <div class="hint-row">
+        <button class="hint-pill" data-hint="Gift under $1,000 for a CEO who loves watches.">Gift under $1,000 for a CEO</button>
+        <button class="hint-pill" data-hint="Private island week in January for two families, flexible on region, $150k–$250k.">Private island in January</button>
+        <button class="hint-pill" data-hint="Statement timepiece under $50k, daily wear, not on every wrist.">Statement timepiece — no waitlist</button>
+        <button class="hint-pill" data-hint="Compare jet card vs on-demand charter for 10–15 flights a year between NYC and Europe.">Jet card vs on‑demand</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Partner Disclosure:</strong> Some suggestions may include sponsored partners. This does not affect guidance.
+    <br><br>
+    <strong>Editorial Disclaimer:</strong> The Aureum Butler provides editorial recommendations and informational guidance only. We are not travel agents, financial advisors, medical professionals, or legal counsel. All suggestions are for informational purposes and should not be construed as guarantees of availability, pricing, outcomes, or suitability. This service may provide links to third-party merchants and service providers; when you use these links, we may receive compensation. Always independently verify details, confirm availability, and assess suitability with licensed providers before making any purchase or booking decision.
+  </footer>
+
+  <script>
+    const chatEl = document.getElementById('chat');
+    const messageEl = document.getElementById('message');
+    const sendBtn = document.getElementById('sendBtn');
+    const hintButtons = document.querySelectorAll('.hint-pill');
+
+    function appendBubble(role, text) {
+      const div = document.createElement('div');
+      div.className = 'bubble ' + (role === 'user' ? 'user' : 'ai');
+      
+      if (role === 'ai') {
+        const markdownLinks = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        div.innerHTML = markdownLinks;
+      } else {
+        div.textContent = text;
+      }
+      
+      chatEl.appendChild(div);
+      chatEl.scrollTop = chatEl.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const text = messageEl.value.trim();
+      if (!text) return;
+      appendBubble('user', text);
+      messageEl.value = '';
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Thinking…';
+
+      try {
+        const response = await fetch('/.netlify/functions/ai-chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+        if (!response.ok) {
+          throw new Error('Request failed');
+        }
+        const data = await response.json();
+        appendBubble('ai', data.reply || 'The butler is unavailable at the moment. Please try again shortly.');
+      } catch (err) {
+        console.error(err);
+        appendBubble('ai', 'Apologies — the line to the Butler is busy. Please check your connection and try again.');
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send';
+      }
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    messageEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    hintButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        messageEl.value = btn.getAttribute('data-hint');
+        messageEl.focus();
+      });
+    });
+  </script>
+</body>
+</html>
