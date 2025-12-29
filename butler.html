@@ -176,6 +176,51 @@
       color: var(--text-soft);
       opacity: 0.85;
     }
+    .intro-content {
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: rgba(10,10,16,0.7);
+    }
+    .intro-content h2 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    .intro-content h3 {
+      font-size: 1.1rem;
+      margin: 20px 0 10px;
+      color: var(--text-main);
+    }
+    .intro-content p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .expertise-item {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(5,5,7,0.6);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .expertise-item h4 {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .expertise-item p {
+      font-size: 0.86rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -190,6 +235,45 @@
   </header>
 
   <main>
+    <section class="intro-content">
+      <h2>Your Personal Luxury Concierge</h2>
+      <p>The Aureum Butler is an AI-powered concierge service designed to help discerning individuals discover and access the world's finest luxury offerings. Whether you're searching for a rare timepiece, planning an ultra-luxury getaway, or seeking discreet executive protection services, the Butler provides personalized, knowledgeable guidance tailored to your specific requirements and preferences.</p>
+
+      <h3>What the Butler Can Help You Find</h3>
+      <p>Our concierge specializes in curating recommendations across the full spectrum of luxury goods and services. The Butler draws from extensive knowledge of the luxury market to provide informed suggestions that match your taste, timeline, and budget.</p>
+
+      <div class="expertise-grid">
+        <div class="expertise-item">
+          <h4>Fine Watches &amp; Jewelry</h4>
+          <p>From grail-level Patek Philippe complications to Audemars Piguet Royal Oaks and rare Richard Mille pieces, the Butler can guide you through the secondary market, allocation strategies, and vetted dealers. Whether you seek an everyday statement piece or a museum-quality investment, receive tailored recommendations based on your collection goals and wearing preferences.</p>
+        </div>
+        <div class="expertise-item">
+          <h4>Private Aviation</h4>
+          <p>Navigate the complex world of private jet travel with confidence. The Butler explains the differences between fractional ownership, jet cards, and on-demand charter services. Learn which options best suit your flight frequency, typical routes, and service expectations—whether you're flying 10 times a year or 100.</p>
+        </div>
+        <div class="expertise-item">
+          <h4>Ultra-Luxury Accommodations</h4>
+          <p>Discover private islands, palatial villas, and world-class hotels that deliver exceptional experiences. From full-island buyouts in the Maldives to historic estates in Tuscany, the Butler helps identify properties that match your party size, desired amenities, and privacy requirements.</p>
+        </div>
+        <div class="expertise-item">
+          <h4>Executive Protection &amp; Privacy</h4>
+          <p>For those requiring discreet security services, the Butler provides guidance on armored vehicles, secure transportation, and executive protection teams across Europe, North America, and the Middle East. Understand the options available for maintaining safety without sacrificing comfort or discretion.</p>
+        </div>
+        <div class="expertise-item">
+          <h4>Fine Dining &amp; Private Chefs</h4>
+          <p>Whether you need a last-minute reservation at a three-Michelin-star restaurant or want to arrange a private chef for an intimate gathering, the Butler offers recommendations tailored to your culinary preferences, dietary requirements, and the occasion at hand.</p>
+        </div>
+        <div class="expertise-item">
+          <h4>Elite Banking &amp; Credit</h4>
+          <p>Explore the world of invitation-only credit cards, private banking relationships, and premium travel rewards programs. The Butler explains the benefits, requirements, and real-world value of elite financial products from American Express, Chase, and boutique institutions.</p>
+        </div>
+      </div>
+
+      <h3>How the Butler Works</h3>
+      <p>Simply describe what you're looking for in the chat below. Include details such as your budget range, preferred timing, location preferences, and any specific requirements. The more context you provide, the more refined and relevant the Butler's recommendations will be. Each response is crafted to provide actionable information—not generic lists, but specific suggestions you can pursue immediately.</p>
+      <p>The Butler serves as your starting point for research and discovery. While we provide knowledgeable recommendations based on current market conditions and luxury industry expertise, we always recommend verifying details directly with providers and consulting appropriate professionals for significant purchases or bookings.</p>
+    </section>
+
     <div class="note">
       Some suggestions may include sponsored partners. This does not affect guidance.
     </div>
