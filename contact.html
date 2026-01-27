@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact – The Aureum List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact The Aureum List – Reach our team for inquiries, feedback, and partnership discussions." />
+  <style>
+    :root {
+      --bg: #050507;
+      --card: #111016;
+      --accent: #bfa46a;
+      --text-main: #f7f4ef;
+      --text-soft: #c9c3b7;
+      --border-subtle: rgba(255,255,255,0.06);
+      --radius-xl: 22px;
+      --radius-pill: 999px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top, #101018 0, #050507 55%, #020203 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(5,5,7,0.95);
+      backdrop-filter: blur(18px);
+    }
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .title-stack h1 {
+      font-size: 1.2rem;
+    }
+    .pill-link {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.8rem;
+      background: rgba(5,5,7,0.7);
+      white-space: nowrap;
+      color: var(--text-main);
+    }
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 36px 18px;
+    }
+    .content {
+      line-height: 1.7;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin: 32px 0 16px;
+      color: var(--accent);
+    }
+    h2:first-child {
+      margin-top: 0;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin: 24px 0 10px;
+      color: var(--text-main);
+    }
+    p {
+      margin-bottom: 16px;
+      color: var(--text-soft);
+    }
+    .contact-card {
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: rgba(10,10,16,0.7);
+      margin: 24px 0;
+    }
+    .contact-item {
+      margin-bottom: 20px;
+    }
+    .contact-item:last-child {
+      margin-bottom: 0;
+    }
+    .contact-item h4 {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .contact-item p {
+      margin-bottom: 0;
+    }
+    .email-link {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 16px 18px 26px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+    .footer-links {
+      margin-top: 8px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="title-stack">
+        <h1>Contact</h1>
+      </div>
+      <a href="index.html" class="pill-link">← Back to The Aureum List</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <h2>Contact Us</h2>
+      <p>We welcome inquiries from readers, potential partners, and anyone interested in The Aureum List. Our team reviews all messages and responds to relevant inquiries.</p>
+
+      <div class="contact-card">
+        <div class="contact-item">
+          <h4>General Inquiries</h4>
+          <p>For questions about our content, recommendations, or general feedback:</p>
+          <p><a href="mailto:hello@theaureumlist.com" class="email-link">hello@theaureumlist.com</a></p>
+        </div>
+
+        <div class="contact-item">
+          <h4>Partnership &amp; Business</h4>
+          <p>For partnership discussions, advertising inquiries, or business matters:</p>
+          <p><a href="mailto:partners@theaureumlist.com" class="email-link">partners@theaureumlist.com</a></p>
+        </div>
+
+        <div class="contact-item">
+          <h4>Editorial</h4>
+          <p>For press inquiries, editorial corrections, or content-related matters:</p>
+          <p><a href="mailto:editorial@theaureumlist.com" class="email-link">editorial@theaureumlist.com</a></p>
+        </div>
+      </div>
+
+      <h3>Response Times</h3>
+      <p>We aim to respond to all inquiries within 2-3 business days. Partnership and business inquiries may require additional time for proper evaluation.</p>
+
+      <h3>A Note on Privacy</h3>
+      <p>We respect your privacy and handle all correspondence with discretion. Please review our <a href="privacy.html">Privacy Policy</a> for details on how we handle information.</p>
+
+      <h2>About The Aureum List</h2>
+      <p>The Aureum List is a discreet, editorial concierge guide for private families, founders, collectors, and travelers who prefer excellence without friction. Learn more on our <a href="about.html">About page</a>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div>&copy; 2025 The Aureum List &middot; A private, editorial concierge guide.</div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="about.html">About</a>
+    </div>
+  </footer>
+</body>
+</html>
