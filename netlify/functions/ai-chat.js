@@ -50,19 +50,29 @@ export async function handler(event, context) {
   }
 
   const userMessage = body.message;
-  if (!userMessage || typeof userMessage !== 'string' || userMessage.trim().length === 0) {
+  const incomingMessages = body.messages;
+
+  // Support both legacy single message and new messages array
+  let messages;
+  if (Array.isArray(incomingMessages) && incomingMessages.length > 0) {
+    // Prepend system prompt to conversation history
+    messages = [
+      { role: 'system', content: SYSTEM_PROMPT },
+      ...incomingMessages
+    ];
+  } else if (userMessage && typeof userMessage === 'string' && userMessage.trim().length > 0) {
+    // Legacy: single message
+    messages = [
+      { role: 'system', content: SYSTEM_PROMPT },
+      { role: 'user', content: userMessage.trim() }
+    ];
+  } else {
     return {
       statusCode: 400,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Missing or empty "message" field' })
+      body: JSON.stringify({ error: 'Missing or empty "message" or "messages" field' })
     };
   }
-
-  // Build messages array for OpenAI Chat Completions
-  const messages = [
-    { role: 'system', content: SYSTEM_PROMPT },
-    { role: 'user', content: userMessage.trim() }
-  ];
 
   try {
     const response = await fetch(OPENAI_API_URL, {
