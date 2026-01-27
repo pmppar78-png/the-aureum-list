@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://theaureumlist.com/sitemap.xml
+Sitemap: https://theaureumlistai.netlify.app/sitemap.xml
