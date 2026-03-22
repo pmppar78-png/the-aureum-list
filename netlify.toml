@@ -5,3 +5,16 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+# Redirect Netlify subdomain to canonical custom domain (301 permanent)
+[[redirects]]
+  from = "https://theaureumlistai.netlify.app/*"
+  to = "https://theaureumlistai.com/:splat"
+  status = 301
+  force = true
+
+# Custom headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "index, follow"
