@@ -2,6 +2,9 @@
   publish = "."
   command = ""
 
+[build.processing.html]
+  pretty_urls = true
+
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
@@ -12,6 +15,77 @@
   to = "https://theaureumlistai.com/:splat"
   status = 301
   force = true
+
+# Force trailing-slash removal for consistency (extensionless URLs without trailing slash)
+[[redirects]]
+  from = "/articles/elite-credit-cards-guide/"
+  to = "/articles/elite-credit-cards-guide"
+  status = 301
+
+[[redirects]]
+  from = "/articles/executive-protection-guide/"
+  to = "/articles/executive-protection-guide"
+  status = 301
+
+[[redirects]]
+  from = "/articles/fine-dining-guide/"
+  to = "/articles/fine-dining-guide"
+  status = 301
+
+[[redirects]]
+  from = "/articles/luxury-gifting-guide/"
+  to = "/articles/luxury-gifting-guide"
+  status = 301
+
+[[redirects]]
+  from = "/articles/luxury-timepieces-guide/"
+  to = "/articles/luxury-timepieces-guide"
+  status = 301
+
+[[redirects]]
+  from = "/articles/private-aviation-guide/"
+  to = "/articles/private-aviation-guide"
+  status = 301
+
+[[redirects]]
+  from = "/articles/private-islands-guide/"
+  to = "/articles/private-islands-guide"
+  status = 301
+
+[[redirects]]
+  from = "/articles/ultra-luxury-hotels-guide/"
+  to = "/articles/ultra-luxury-hotels-guide"
+  status = 301
+
+[[redirects]]
+  from = "/butler/"
+  to = "/butler"
+  status = 301
+
+[[redirects]]
+  from = "/about/"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/team/"
+  to = "/team"
+  status = 301
+
+[[redirects]]
+  from = "/contact/"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/privacy/"
+  to = "/privacy"
+  status = 301
+
+[[redirects]]
+  from = "/terms/"
+  to = "/terms"
+  status = 301
 
 # Custom headers for all pages
 [[headers]]
